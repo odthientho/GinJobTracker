@@ -11,11 +11,12 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/pub/css/reset.css">
-    <link rel="stylesheet" href="/pub/css/styles.css">
+    <link rel="stylesheet" href="/pub/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/84b1575519.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <section id="header" class="nav">
     <div class="header-nav">
         <div class="logo-nav">
@@ -50,6 +51,7 @@
             </button>
             <div id="quote-me-nav">
                 <a href="/signout">Sign Out</a>
+                <a href="/login">Login</a>
             </div>
         </nav>
     </div>
