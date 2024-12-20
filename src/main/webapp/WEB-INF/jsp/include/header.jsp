@@ -50,8 +50,8 @@
                 <span>Me <i class="fa-solid fa-caret-down"></i></span>
             </button>
             <div id="quote-me-nav">
-                <a href="/signout">Sign Out</a>
-                <a href="/login">Login</a>
+                <a href="/login/logout">Sign Out</a>
+                <a href="/login/login">Login</a>
             </div>
         </nav>
     </div>

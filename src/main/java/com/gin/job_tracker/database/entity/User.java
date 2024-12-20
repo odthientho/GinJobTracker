@@ -22,7 +22,7 @@ public class User {
     @Column(name = "email", length = 50, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", length = 50, nullable = false)
+    @Column(name = "password", length = 100, nullable = false)
     private String password;
 
     @Temporal(TemporalType.TIMESTAMP)
