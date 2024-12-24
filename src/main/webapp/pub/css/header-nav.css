@@ -1,0 +1,134 @@
+.nav {
+    background-color: var(--white-color);
+    border-bottom: 1px solid rgb(140 140 140/.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    height: var(--nav-height);
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    width: 60%;
+}
+
+.logo-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 45px;
+}
+
+.img-fit-container {
+    height: 38px;
+    width: 38px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.search-nav {
+    display: block;
+    position: relative;
+    font-size: 12px;
+    margin: 0;
+}
+
+.search-nav input {
+    padding-left: 50px;
+    border-radius: 3px;
+    border: none;
+    height: 38px;
+    background-color: #edf3f8;
+}
+
+.search-nav input:focus {
+    font-size: 14px;
+    border: none;
+}
+
+.search-nav div {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.global-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    height: 100%;
+}
+
+.global-nav-item {
+    background-color: transparent;
+    color: rgb(0 0 0 / .6);
+    height: 100%;
+    width: 80px;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.global-nav-item:hover {
+    color: rgb(0 0 0 / .9);
+    cursor: pointer;
+}
+
+.global-nav-item-active {
+    border-bottom: 2px black solid;
+    color: rgb(0 0 0 / .9);
+}
+
+.global-nav-item .global-nav-icon  {
+    width: 28px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.global-nav-item span {
+    font-size: 12px;
+}
+
+#quote-me-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 5px;
+    right: 20%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgb(0 0 0 / .3);
+    z-index: 1000;
+    border-radius: 5px;
+    min-width: 150px;
+    overflow: hidden;
+}
+
+/* Dropdown menu items */
+#quote-me-nav a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}

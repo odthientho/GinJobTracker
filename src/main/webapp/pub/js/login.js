@@ -1,18 +1,15 @@
-
-const passwordInput = document.getElementById('password-input');
-const togglePassword = document.getElementById('togglePassword');
+const loginForm = document.getElementById("form-login");
+const email = document.getElementById("form-login-username");
+const password = document.getElementById("form-login-password");
+const togglePassword = document.getElementById('form-login-password-toggle-btn');
+const emailLoginAlert = document.getElementById("form-login-username-alert");
+const passwordLoginAlert = document.getElementById("form-login-password-alert");
 
 togglePassword.addEventListener('click', () => {
-    let type = passwordInput.type === 'password';
-    passwordInput.type = type ? 'text' : 'password';
+    let type = password.type === 'password';
+    password.type = type ? 'text' : 'password';
     togglePassword.textContent = type ? 'hide' : 'show';
 });
-
-const loginForm = document.getElementById("login-form");
-const email = document.getElementById("email-input");
-const password = document.getElementById("password-input");
-const emailLoginAlert = document.getElementById("email-login-alert");
-const passwordLoginAlert = document.getElementById("password-login-alert");
 
 loginForm.addEventListener('submit', function(event) {
 
@@ -39,7 +36,7 @@ loginForm.addEventListener('submit', function(event) {
     }
 });
 
-const companyLogo = document.getElementById('company-logo');
-companyLogo.addEventListener('click', () => {
-    window.location.href = companyLogo.getAttribute('data-href');
+const loginLogo = document.getElementById('logo-login');
+loginLogo.addEventListener('click', () => {
+    window.location.href = loginLogo.getAttribute('data-href');
 });

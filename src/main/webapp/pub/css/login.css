@@ -1,12 +1,6 @@
-body {
-    font-family: 'Arial', sans-serif;
-}
-
-.container {
+.login-container {
     min-height: 100vh;
     width: 100%;
-
-    background-color: hsl(180, 52%, 96%);
 
     display: flex;
     justify-content: center;
@@ -23,7 +17,7 @@ body {
     height: 600px;
     width: 380px;
     padding: 20px 40px 20px 40px;
-    margin: 20px 0 20px 0;
+    margin: 100px 0 50px 0;
     overflow-y: auto;
 
     box-shadow: 5px 10px 10px hsl(180, 15%, 70%);
@@ -31,7 +25,7 @@ body {
     border-radius: 5px;
 }
 
-.company-logo {
+.logo-login {
     width: 90px;
     height: 90px;
     background-color: hsl(180, 29%, 50%);
@@ -39,30 +33,30 @@ body {
     overflow: hidden;
 }
 
-.welcome {
+.welcome-login {
     text-align: center;
     font-size: 30px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.welcome span {
+.welcome-login span {
     font-size: 12px;
 }
 
-.input-form {
+.form-login {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.form-group {
+.form-login-item {
     width: 100%;
     position: relative;
     margin-bottom: 15px;
 }
 
-.input {
+.form-login-input {
     width: 100%;
     padding: 13px 10px 13px 10px;
     font-size: 15px;
@@ -71,7 +65,7 @@ body {
     transition: border-color 0.3s;
 }
 
-label {
+.form-login-label {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -83,8 +77,8 @@ label {
     pointer-events: none;
 }
 
-.input:focus + label,
-.input:not(:placeholder-shown) + label {
+.form-login-input:focus + .form-login-label,
+.form-login-input:not(:placeholder-shown) + .form-login-label {
     top: -10px;
     font-size: 12px;
     color: hsl(180, 29%, 50%);
@@ -92,7 +86,7 @@ label {
     padding: 0 5px;
 }
 
-.password-eye {
+.form-login-password-toggle {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -103,7 +97,7 @@ label {
     color: hsl(180, 29%, 50%);
 }
 
-.login-alert {
+.form-login-alert {
     display: none;
     text-align: left;
     font-size: 12px;
@@ -113,7 +107,7 @@ label {
     text-decoration: none;
 }
 
-.submitBtn {
+.form-login-submit-btn {
     width: 100%;
     height: 45px;
     padding: 10px;
@@ -126,47 +120,43 @@ label {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.form-login-submit-btn:hover {
     background-color: hsl(180, 29%, 40%);
 }
 
-.signupBtn {
+.form-login-signup-switch-btn {
     display: block;
     text-align: left;
     font-size: 12px;
     margin-left: 5px;
 }
 
-.signupBtn a {
+.form-login-signup-switch-btn a {
     font-weight: bold;
     color: hsl(180, 29%, 50%);
     text-decoration: none;
 }
 
-.signupBtn a:hover {
+.form-login-signup-switch-btn a:hover {
     text-decoration: underline;
 }
 
-.separator {
+.form-login-separator {
     display: flex;
     align-items: center;
     text-align: center;
     width: 100%;
 }
 
-.separator .spanAfter,
-.separator .spanBefore {
+.form-login-separator-span {
     border-top: 1px #999 solid;
-    flex: 1;
-}
-
-.separator span {
     font-size: 12px;
     color: #999;
     padding: 0 10px;
+    flex: 1;
 }
 
-.googleBtn, .linkedinBtn {
+.form-login-google-btn, .form-login-linkedin-btn {
     width: 100%;
     height: 45px;
     font-size: 13px;
@@ -185,11 +175,11 @@ button:hover {
     gap: 20px;
 }
 
-.googleBtn span, .linkedinBtn span {
+.form-login-google-btn span, .form-login-linkedin-btn span {
     font-size: 30px;
     color: #777;
 }
 
-.googleBtn:hover, .linkedinBtn:hover {
+.form-login-google-btn:hover, .form-login-linkedin-btn:hover {
     background-color: #0001;
 }
