@@ -13,19 +13,19 @@
             </div>
         </div>
         <nav class="global-nav">
-            <button class="global-nav-item home-nav" data-href="/home">
+            <button class="global-nav-item home-nav <c:if test="${title eq 'Home - Dashboard'}">global-nav-item-active</c:if>" data-href="/home">
                 <i class="global-nav-icon fa-solid fa-house"></i>
                 <span>Home</span>
             </button>
-            <button class="global-nav-item global-nav-item-active jobs-nav" data-href="/jobs">
+            <button class="global-nav-item <c:if test="${title eq 'My Jobs'}">global-nav-item-active</c:if> jobs-nav" data-href="/jobs/myjobs">
                 <i class="global-nav-icon fa-solid fa-briefcase"></i>
                 <span>My Jobs</span>
             </button>
-            <button class="global-nav-item people-nav" data-href="/people">
+            <button class="global-nav-item <c:if test="${title eq 'My People'}">global-nav-item-active</c:if> people-nav" data-href="/people/mypeople">
                 <i class="global-nav-icon fa-solid fa-user-group"></i>
                 <span>My People</span>
             </button>
-            <button class="global-nav-item task-nav" data-href="/tasks">
+            <button class="global-nav-item <c:if test="${title eq 'My Todos'}">global-nav-item-active</c:if> task-nav" data-href="/todos/mytodos">
                 <i class="global-nav-icon fa-solid fa-list-check"></i>
                 <span>My To-do</span>
             </button>

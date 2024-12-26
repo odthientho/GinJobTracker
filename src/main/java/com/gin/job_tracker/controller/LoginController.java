@@ -25,6 +25,7 @@ public class LoginController {
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView();
+        response.addObject("title", "Login");
         response.setViewName("login/login");
         return response;
     }

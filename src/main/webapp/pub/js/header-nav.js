@@ -17,10 +17,10 @@ buttons.forEach(button => {
             buttons.forEach(btn => btn.classList.remove('global-nav-item-active'));
             button.classList.add('global-nav-item-active');
 
-            // const href = button.getAttribute('data-href');
-            // if (href) {
-            //     window.location.href = href; // Redirect to the URL
-            // }
+            const href = button.getAttribute('data-href');
+            if (href) {
+                window.location.href = href; // Redirect to the URL
+            }
         }
     });
 });
