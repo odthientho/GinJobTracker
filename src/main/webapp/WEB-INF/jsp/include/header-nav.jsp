@@ -34,8 +34,9 @@
                 <span>Me <i class="fa-solid fa-caret-down"></i></span>
             </button>
             <div id="quote-me-nav">
-                <a href="/login/logout">Sign Out</a>
-                <a href="/login/login">Login</a>
+                <a href="/login/login">Log In</a>
+                <a href="/login/logout">Log Out</a>
+                <a href="/login/signup">Sign Up</a>
             </div>
         </nav>
     </div>

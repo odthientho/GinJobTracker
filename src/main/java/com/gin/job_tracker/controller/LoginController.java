@@ -25,11 +25,19 @@ public class LoginController {
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView();
-        response.addObject("title", "Login");
+        response.addObject("title", "Log In");
         response.setViewName("login/login");
         return response;
     }
-//
+
+    @GetMapping("/signup")
+    public ModelAndView signup() {
+        ModelAndView response = new ModelAndView();
+        response.addObject("title", "Sign Up");
+        response.setViewName("login/signup");
+        return response;
+    }
+
 //    @PostMapping("/submit")
 //    public ModelAndView submit(@Valid LoginFormBean user, BindingResult bindingResult) {
 //        ModelAndView response = new ModelAndView();
