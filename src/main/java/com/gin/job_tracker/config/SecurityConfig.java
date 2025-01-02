@@ -17,7 +17,9 @@ public class SecurityConfig {
         // this is list of URLs that require authentication to the website before user can view URL
         // all URLs are acceptable to everyone except for the one listed here.
         http.authorizeHttpRequests((authorize) -> authorize
-                // Require authentication for /customer/** endpoints
+                .requestMatchers("/jobs/**").authenticated()
+                .requestMatchers("/people/**").authenticated()
+                .requestMatchers("/todos/**").authenticated()
                 .anyRequest().permitAll()
         );
 
@@ -26,7 +28,7 @@ public class SecurityConfig {
                 .loginPage("/login/login")
                 // spring security has this controller method created for us already..
                 // and we are just configuring URL where it submits to
-                .loginProcessingUrl("/login/submit"));
+                .loginProcessingUrl("/login/loginSubmit"));
 
         http.logout(formLogout -> formLogout
                 .invalidateHttpSession(true)
@@ -36,6 +38,8 @@ public class SecurityConfig {
                 // where does it go when logged out
                 .logoutSuccessUrl("/")
                 .deleteCookies("username", "JSESSIONID"));
+
+        http.exceptionHandling(exception -> exception.accessDeniedPage("/404"));
         return http.build();
     }
 

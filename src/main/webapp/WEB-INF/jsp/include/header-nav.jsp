@@ -1,4 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <link rel="stylesheet" href="/pub/css/header-nav.css">
 <section id="header-nav" class="nav">
@@ -17,6 +18,8 @@
                 <i class="global-nav-icon fa-solid fa-house"></i>
                 <span>Home</span>
             </button>
+
+            <sec:authorize access="isAuthenticated()">
             <button class="global-nav-item <c:if test="${title eq 'My Jobs'}">global-nav-item-active</c:if> jobs-nav" data-href="/jobs/myjobs">
                 <i class="global-nav-icon fa-solid fa-briefcase"></i>
                 <span>My Jobs</span>
@@ -29,14 +32,20 @@
                 <i class="global-nav-icon fa-solid fa-list-check"></i>
                 <span>My To-do</span>
             </button>
+            </sec:authorize>
+
             <button class="global-nav-item me-nav">
                 <img class="global-nav-icon" src="/pub/images/gin-logo.png"/>
                 <span>Me <i class="fa-solid fa-caret-down"></i></span>
             </button>
             <div id="quote-me-nav">
-                <a href="/login/login">Log In</a>
-                <a href="/login/logout">Log Out</a>
-                <a href="/login/signup">Sign Up</a>
+                <sec:authorize access="!isAuthenticated()">
+                    <a href="/login/login">Log In</a>
+                    <a href="/login/signup">Sign Up</a>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <a href="/login/logout">Log Out</a>
+                </sec:authorize>
             </div>
         </nav>
     </div>

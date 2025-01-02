@@ -29,6 +29,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             // this is not good practice to printout username
             throw new UsernameNotFoundException("Email not found: " + username);
         }
+        log.debug("UserDetailsService loadUserByUsername: " + user.toString());
 
         // other configuration for spring security
         boolean enabled = true;
@@ -46,8 +47,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 accountNonExpired,
                 credentialsNonExpired,
                 accountNonLocked,
-                new ArrayList<>());
-                //springRoles);
+                new ArrayList<>()
+                //springRoles
+                );
     }
 
 //    public Collection<? extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
