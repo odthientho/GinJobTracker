@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/pub/css/login.css">
 <section id="login" class="login-container">
   <div class="login-box">
-    <img id="logo-login" class="logo-login" data-href="/index" src="/pub/images/gin-logo.png"/>
+    <img id="logo-login" class="logo-login" src="/pub/images/gin-logo.png"/>
     <div class="welcome-login" >Welcome <br> <span>Login in to continue Job Tracker</span></div>
     <form action="/login/loginSubmit" id="form-login" class="form-login" method="post">
       <div class="form-login-item">

@@ -26,10 +26,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDAO.findByEmailIgnoreCase(username);
         if (user == null) {
-            // this is not good practice to printout username
             throw new UsernameNotFoundException("Email not found: " + username);
         }
-        log.debug("UserDetailsService loadUserByUsername: " + user.toString());
+        log.debug("UserDetailsService loadUserByUsername: " + user);
 
         // other configuration for spring security
         boolean enabled = true;

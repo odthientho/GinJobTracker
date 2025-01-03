@@ -44,6 +44,7 @@
                     <a href="/login/signup">Sign Up</a>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
+                    Hi, <sec:authentication property="principal.username"/>
                     <a href="/login/logout">Log Out</a>
                 </sec:authorize>
             </div>

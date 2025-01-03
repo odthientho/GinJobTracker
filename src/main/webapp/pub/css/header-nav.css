@@ -116,7 +116,6 @@
     margin-top: 5px;
     right: 20%;
     background-color: white;
-    border: 1px solid #ccc;
     box-shadow: 0 4px 6px rgb(0 0 0 / .3);
     z-index: 1000;
     border-radius: 5px;
@@ -131,4 +130,8 @@
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
+
+#quote-me-nav a:hover {
+    background-color: #999999;
 }

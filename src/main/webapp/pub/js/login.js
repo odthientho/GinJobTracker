@@ -35,8 +35,3 @@ loginForm.addEventListener('submit', function(event) {
         else passwordLoginAlert.innerHTML =  "Invalid Password."
     }
 });
-
-const loginLogo = document.getElementById('logo-login');
-loginLogo.addEventListener('click', () => {
-    window.location.href = loginLogo.getAttribute('data-href');
-});
