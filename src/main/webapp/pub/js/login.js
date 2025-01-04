@@ -1,9 +1,8 @@
-const loginForm = document.getElementById("form-login");
+const formLogin = document.getElementById("form-login");
 const email = document.getElementById("form-login-username");
 const password = document.getElementById("form-login-password");
 const togglePassword = document.getElementById('form-login-password-toggle-btn');
-const emailLoginAlert = document.getElementById("form-login-username-alert");
-const passwordLoginAlert = document.getElementById("form-login-password-alert");
+const formLoginAlert = document.getElementById("form-login-alert");
 
 togglePassword.addEventListener('click', () => {
     let type = password.type === 'password';
@@ -11,27 +10,15 @@ togglePassword.addEventListener('click', () => {
     togglePassword.textContent = type ? 'hide' : 'show';
 });
 
-loginForm.addEventListener('submit', function(event) {
-
+formLogin.addEventListener('submit', function(event) {
+    event.preventDefault();
+    formLoginAlert.style.display = "block";
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (emailRegex.test(email.value.trim())) {
-        emailLoginAlert.innerHTML = "";
-        emailLoginAlert.style.display = "none";
+         if (password.value.trim() === "") formLoginAlert.innerHTML = "Password is required.";
+        else event.target.submit();
     } else {
-        event.preventDefault();
-        emailLoginAlert.style.display = "block";
-        if (email.value.trim() === "") emailLoginAlert.innerHTML = "Email Address is required.";
-        else emailLoginAlert.innerHTML = "Invalid Email.";
-    }
-
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-    if (passwordRegex.test(password.value)) {
-        passwordLoginAlert.innerHTML = "";
-        passwordLoginAlert.style.display = "none";
-    } else {
-        event.preventDefault();
-        passwordLoginAlert.style.display = "block";
-        if (password.value.trim() === "") passwordLoginAlert.innerHTML = "Password is required.";
-        else passwordLoginAlert.innerHTML =  "Invalid Password."
+        if (email.value.trim() === "") formLoginAlert.innerHTML = "Email Address is required.";
+        else formLoginAlert.innerHTML = "Invalid Email.";
     }
 });

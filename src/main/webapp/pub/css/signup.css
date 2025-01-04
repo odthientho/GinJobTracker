@@ -12,9 +12,9 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 20px;
 
     background-color: white;
-    height: 500px;
     width: 380px;
     padding: 20px 40px 20px 40px;
     margin: 100px 0 50px 0;
@@ -98,13 +98,16 @@
 }
 
 .form-signup-alert {
+    width: 100%;
+}
+
+.form-signup-alert p {
     display: none;
-    text-align: left;
-    font-size: 12px;
-    margin-left: 5px;
-    margin-bottom: 15px;
+    padding: 13px 10px 13px 10px;
+    text-align: center;
     color: rgb(247, 95, 95);
-    text-decoration: none;
+    border: 1px  rgb(247, 95, 95) solid;
+    font-size: 12px;
 }
 
 .form-signup-submit-btn {

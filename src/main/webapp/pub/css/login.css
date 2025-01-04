@@ -12,13 +12,13 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 20px;
 
     background-color: white;
-    height: 600px;
-    width: 380px;
     padding: 20px 40px 20px 40px;
     margin: 100px 0 50px 0;
     overflow-y: auto;
+    width: 380px;
 
     box-shadow: 5px 10px 10px hsl(180, 15%, 70%);
     box-sizing: border-box;
@@ -98,13 +98,16 @@
 }
 
 .form-login-alert {
+    width: 100%;
+}
+
+.form-login-alert p {
     display: none;
-    text-align: left;
-    font-size: 12px;
-    margin-left: 5px;
-    margin-bottom: 15px;
+    padding: 13px 10px 13px 10px;
+    text-align: center;
     color: rgb(247, 95, 95);
-    text-decoration: none;
+    border: 1px  rgb(247, 95, 95) solid;
+    font-size: 12px;
 }
 
 .form-login-submit-btn {
