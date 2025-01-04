@@ -1,7 +1,9 @@
 package com.gin.job_tracker.security;
 
 import com.gin.job_tracker.database.dao.UserDAO;
+import com.gin.job_tracker.database.dao.UserRoleDAO;
 import com.gin.job_tracker.database.entity.User;
+import com.gin.job_tracker.database.entity.UserRole;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +22,9 @@ import java.util.List;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
+    private UserRoleDAO userRoleDAO;
+
+    @Autowired
     private UserDAO userDAO;
 
     @Override
@@ -28,7 +33,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("Email not found: " + username);
         }
-        log.debug("UserDetailsService loadUserByUsername: " + user);
 
         // other configuration for spring security
         boolean enabled = true;
@@ -36,8 +40,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
 
-//        List<UserRole> userRoles = userRoleDAO.findByUserId(user.getId());
-//        Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
+        List<UserRole> userRoles = userRoleDAO.findByUserId(user.getId());
+        Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
 
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
@@ -46,16 +50,15 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 accountNonExpired,
                 credentialsNonExpired,
                 accountNonLocked,
-                new ArrayList<>()
-                //springRoles
+                springRoles
                 );
     }
 
-//    public Collection<? extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//        for (UserRole userRole : userRoles) {
-//            authorities.add(new SimpleGrantedAuthority(userRole.getRoleName()));
-//        }
-//        return authorities;
-//    }
+    public Collection<? extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (UserRole userRole : userRoles) {
+            authorities.add(new SimpleGrantedAuthority(userRole.getRole()));
+        }
+        return authorities;
+    }
 }

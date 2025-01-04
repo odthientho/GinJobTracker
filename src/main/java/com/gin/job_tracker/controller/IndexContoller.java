@@ -17,4 +17,11 @@ public class IndexContoller {
         response.setViewName("index");
         return response;
     }
+
+    @GetMapping("/404")
+    public ModelAndView notFound() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("404");
+        return response;
+    }
 }
