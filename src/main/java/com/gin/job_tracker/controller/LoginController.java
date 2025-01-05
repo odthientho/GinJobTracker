@@ -6,6 +6,7 @@ import com.gin.job_tracker.formbean.SignUpFormBean;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class LoginController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
     public ModelAndView login() {
@@ -46,7 +50,13 @@ public class LoginController {
             response.addObject("error", bindingResult.getAllErrors().get(0).getDefaultMessage());
             response.setViewName("login/signup");
         } else {
+            User user = new User();
 
+            user.setEmail(formUser.getEmail());
+            user.setPassword(passwordEncoder.encode(formUser.getPassword()));
+            user.setUsername(formUser.getUsername());
+
+            userDAO.save(user);
             response.setViewName("redirect:/index");
         }
         return response;

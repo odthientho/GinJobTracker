@@ -26,6 +26,12 @@
         <div class="form-login-signup-switch-btn">Don't have an account? <a href="/login/login">Log In</a> </div>
         <div class="form-signup-alert">
             <p id="form-signup-alert">
+                <c:if test="${not empty error}">
+                    ${error}
+                    <script>
+                        document.getElementById("form-signup-alert").style.display = "block";
+                    </script>
+                </c:if>
             </p>
         </div>
     </div>

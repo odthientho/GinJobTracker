@@ -3,6 +3,7 @@ package com.gin.job_tracker.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 @Entity
@@ -28,8 +29,7 @@ public class User {
     @Column(name = "username", length = 50)
     private String username;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    private Timestamp createdAt;
 
 }

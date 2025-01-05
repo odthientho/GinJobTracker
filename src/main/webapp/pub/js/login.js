@@ -12,13 +12,11 @@ togglePassword.addEventListener('click', () => {
 
 formLogin.addEventListener('submit', function(event) {
     event.preventDefault();
-    formLoginAlert.style.display = "block";
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (emailRegex.test(email.value.trim())) {
-         if (password.value.trim() === "") formLoginAlert.innerHTML = "Password is required.";
-        else event.target.submit();
-    } else {
+    if (emailRegex.test(email.value.trim()) && password.value.trim() !== "") event.target.submit();
+    else {
+        formLoginAlert.style.display = "block";
+        if (password.value.trim() === "") formLoginAlert.innerHTML = "Password is required.";
         if (email.value.trim() === "") formLoginAlert.innerHTML = "Email Address is required.";
-        else formLoginAlert.innerHTML = "Invalid Email.";
     }
 });
