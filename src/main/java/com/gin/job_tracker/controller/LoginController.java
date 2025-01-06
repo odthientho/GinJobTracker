@@ -3,6 +3,8 @@ package com.gin.job_tracker.controller;
 import com.gin.job_tracker.database.dao.UserDAO;
 import com.gin.job_tracker.database.entity.User;
 import com.gin.job_tracker.formbean.SignUpFormBean;
+import com.gin.job_tracker.security.AuthenticatedUserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class LoginController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
+
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView();
@@ -42,7 +47,7 @@ public class LoginController {
     }
 
     @PostMapping("/signupSubmit")
-    public ModelAndView signupSubmit(@Valid SignUpFormBean formUser, BindingResult bindingResult) {
+    public ModelAndView signupSubmit(@Valid SignUpFormBean formUser, BindingResult bindingResult, HttpSession session) {
         ModelAndView response = new ModelAndView();
         if (bindingResult.hasErrors()) {
             response.addObject("title", "Sign Up");
@@ -57,6 +62,8 @@ public class LoginController {
             user.setUsername(formUser.getUsername());
 
             userDAO.save(user);
+
+            authenticatedUserService.changeLoggedInUsername(session, formUser.getEmail(), formUser.getPassword());
             response.setViewName("redirect:/index");
         }
         return response;

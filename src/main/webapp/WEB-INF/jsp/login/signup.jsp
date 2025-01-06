@@ -23,7 +23,7 @@
             </div>
             <button class="form-signup-submit-btn" type="submit">Continue to sign up</button>
         </form>
-        <div class="form-login-signup-switch-btn">Don't have an account? <a href="/login/login">Log In</a> </div>
+        <div class="form-login-signup-switch-btn">Already have an account? <a href="/login/login">Log In</a> </div>
         <div class="form-signup-alert">
             <p id="form-signup-alert">
                 <c:if test="${not empty error}">
