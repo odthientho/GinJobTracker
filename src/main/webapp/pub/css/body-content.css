@@ -1,0 +1,116 @@
+.body-content {
+    position: relative;
+    top: var(--nav-height);
+    padding-top: 25px;
+    width: 60%;
+    justify-self: center;
+}
+
+.body-content-list {
+    background-color: white;
+    border: 1px solid #2222;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.body-content-title {
+    font-size: 25px;
+    color: #555555;
+    padding-bottom: 15px;
+}
+
+.body-content-filter-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.body-content-filter-button {
+    background-color: transparent;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;;
+    border: 1px solid #999999;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 15px;
+    color: rgb(0 0 0 / .75);
+}
+
+.body-content-filter-button:hover {
+    border: 2px solid #777777;
+    background-color: #1111;
+    padding: 4px 14px;
+    cursor: pointer;
+}
+
+.body-content-filter-button-active {
+    background-color: hsl(180, 29%, 50%);
+}
+
+.body-content-filter-button-active:hover {
+    background-color: hsl(180, 29%, 50%);
+}
+
+.body-content-separator {
+    color: #777777;
+}
+
+.body-content-item-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: #999999 1px solid;
+}
+
+.body-content-item:hover {
+    cursor: pointer;
+}
+
+.body-content-item-logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.body-content-item-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+}
+
+.body-content-item-buttons {
+    margin-left: auto;
+}
+
+.body-content-item-buttons button {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+}
+
+.body-content-item-buttons button:hover {
+    background-color: #1111;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.body-content-item-main {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif;
+}
+
+.body-content-item-main h2 {
+    font-weight: bold;
+}

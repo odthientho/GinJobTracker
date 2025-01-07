@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
-public class IndexContoller {
+public class IndexController {
 
     @GetMapping({"", "/", "/index", "/home"})
     public ModelAndView index() {

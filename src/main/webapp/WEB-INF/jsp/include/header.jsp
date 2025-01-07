@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>${title}</title>
+    <title>${title} | GIN Job Tracker</title>
     <link rel="stylesheet" href="/pub/css/reset.css">
     <link rel="stylesheet" href="/pub/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">

@@ -20,7 +20,7 @@ public class JobController {
     public ModelAndView myjobs() {
         ModelAndView response = new ModelAndView();
         response.addObject("title", "My Jobs");
-        response.setViewName("index");
+        response.setViewName("jobs/myjobs");
         return response;
     }
 }

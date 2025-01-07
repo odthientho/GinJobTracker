@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @Controller
 @RequestMapping("/people")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
 public class PeopleController {
 
     @Autowired
