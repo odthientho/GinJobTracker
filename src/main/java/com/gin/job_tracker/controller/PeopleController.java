@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,14 +28,15 @@ public class PeopleController {
     private AuthenticatedUserService authenticatedUserService;
 
     @GetMapping("/mypeople")
-    public ModelAndView mypeople() {
+    public ModelAndView mypeople(@RequestParam(value = "query", required = false) RelationshipType query) {
         ModelAndView response = new ModelAndView();
         User currentUser = authenticatedUserService.loadCurrentUser();
-        List<People> people = peopleDAO.findByUserId(currentUser.getId());
         response.addObject("title", "My People");
         response.addObject("options", RelationshipType.values());
+        List<People> people;
+        if (query != null) people = peopleDAO.findByUserIdAndRelationshipsType(currentUser.getId(), query);
+        else people= peopleDAO.findByUserId(currentUser.getId());
         response.addObject("people", people);
-        log.debug("People: {}", people.get(0).getRelationships());
         response.setViewName("people/mypeople");
         return response;
     }

@@ -35,7 +35,7 @@
                     <div class="body-content-item-main">
                         <h2>${person.name}</h2>
                         <h3>${person.email}</h3>
-                        <h4>${person.phone} (<span>${person.linkedin}</span>)</h4>
+                        <h4>${person.phone} (<a target="_blank" href="https://${person.linkedin}">${person.linkedin}</a>)</h4>
                     </div>
                     <div class="body-content-item-buttons">
                         <button data-id="${person.id}" class="body-content-item-button-edit"><i class="fa-solid fa-pencil"></i></button>
@@ -48,5 +48,5 @@
     </div>
 </section>
 
-<script src="/pub/js/myjobs.js"></script>
+<script src="/pub/js/mypeople.js"></script>
 <jsp:include page="../include/footer.jsp"/>
