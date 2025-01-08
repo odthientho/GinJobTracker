@@ -24,23 +24,23 @@
         </ul>
         <hr class="body-content-separator"/>
         <ul class="body-content-item-list">
-            <c:if test="${empty jobs}">
+            <c:if test="${empty people}">
                 Not Found
             </c:if>
-            <c:forEach var="job" items="${jobs}">
-                <li class="body-content-item" data-id="${job.id}">
+            <c:forEach var="person" items="${people}">
+                <li class="body-content-item" data-id="${person.id}">
                     <div class="body-content-item-logo">
-                        <img src="${job.companyLogo}"/>
+                        <img src="${person.photo}"/>
                     </div>
                     <div class="body-content-item-main">
-                        <h2>${job.title}</h2>
-                        <h3>${job.companyName}</h3>
-                        <h4>${job.location} (<span>${job.officeType}</span>)</h4>
+                        <h2>${person.name}</h2>
+                        <h3>${person.email}</h3>
+                        <h4>${person.phone} (<span>${person.linkedin}</span>)</h4>
                     </div>
                     <div class="body-content-item-buttons">
-                        <button data-id="${job.id}" class="body-content-item-button-edit"><i class="fa-solid fa-pencil"></i></button>
-                        <button data-id="${job.id}" class="body-content-item-button-delete"><i class="fa-solid fa-x"></i></button>
-                        <button data-id="${job.id}" class="body-content-item-button-switch"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button data-id="${person.id}" class="body-content-item-button-edit"><i class="fa-solid fa-pencil"></i></button>
+                        <button data-id="${person.id}" class="body-content-item-button-delete"><i class="fa-solid fa-x"></i></button>
+                        <button data-id="${person.id}" class="body-content-item-button-switch"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     </div>
                 </li>
             </c:forEach>
