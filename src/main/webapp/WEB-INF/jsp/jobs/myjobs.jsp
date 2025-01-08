@@ -6,65 +6,48 @@
 <!-- data (jobs, people, todos) -->
 <section id="body" class="body-content">
     <div class="body-content-list">
-        <h1 class="body-content-title">My Jobs</h1>
+        <h1 class="body-content-title">${title}</h1>
         <ul class="body-content-filter-list">
             <li class="body-content-filter">
-                <button class="body-content-filter-button body-content-filter-button-active"><i class="fa-solid fa-globe"></i></button>
+                <button data-url="ALL" class="body-content-filter-button
+                    <c:if test="${empty param.query}">body-content-filter-button-active</c:if>">
+                    <i class="fa-solid fa-globe"></i>
+                </button>
             </li>
-            <li class="body-content-filter">
-                <button class="body-content-filter-button" >Applied</button>
-            </li>
-            <li class="body-content-filter">
-                <button class="body-content-filter-button">Interview</button>
-            </li>
-            <li class="body-content-filter">
-                <button class="body-content-filter-button">Offered</button>
-            </li>
-            <li class="body-content-filter">
-                <button class="body-content-filter-button">Rejected</button>
-            </li>
+            <c:forEach var="option" items="${options}">
+                <li class="body-content-filter">
+                    <button class="body-content-filter-button <c:if test="${param.query eq option}">body-content-filter-button-active</c:if>" data-url="${option}">${option}</button>
+                </li>
+            </c:forEach>
             <li id="body-content-new-button" class="body-content-filter">
-                <button class="body-content-filter-button"><i class="fa-solid fa-plus"></i></button>
+                <button class="body-content-filter-button" data-url="NEW"><i class="fa-solid fa-plus"></i></button>
             </li>
         </ul>
         <hr class="body-content-separator"/>
         <ul class="body-content-item-list">
-            <li class="body-content-item">
-                <div class="body-content-item-logo">
-                    <img src="/pub/images/gin-logo.png"/>
-                </div>
-                <div class="body-content-item-main">
-                    <h2>Software Engineer (Frontend)</h2>
-                    <h3>Company Name</h3>
-                    <h3>Location, USA (<span>Remote</span>)</h3>
-                </div>
-                <div class="body-content-item-buttons">
-                    <button><i class="fa-solid fa-pencil"></i></button>
-                    <button><i class="fa-solid fa-x"></i></button>
-                    <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                </div>
-            </li>
-
-            <li class="body-content-item">
-                <div class="body-content-item-logo">
-                    <img src="/pub/images/gin-logo.png"/>
-                </div>
-                <div class="body-content-item-main">
-                    <h2>Software Engineer (Frontend)</h2>
-                    <h3>Company Name</h3>
-                    <h3>Location, USA (<span>Remote</span>)</h3>
-                </div>
-                <div class="body-content-item-buttons">
-                    <button><i class="fa-solid fa-pencil"></i></button>
-                    <button><i class="fa-solid fa-x"></i></button>
-                    <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                </div>
-            </li>
+            <c:if test="${empty jobs}">
+                Not Found
+            </c:if>
+            <c:forEach var="job" items="${jobs}">
+                <li class="body-content-item" data-id="${job.id}">
+                    <div class="body-content-item-logo">
+                        <img src="${job.companyLogo}"/>
+                    </div>
+                    <div class="body-content-item-main">
+                        <h2>${job.title}</h2>
+                        <h3>${job.companyName}</h3>
+                        <h4>${job.location} (<span>${job.officeType}</span>)</h4>
+                    </div>
+                    <div class="body-content-item-buttons">
+                        <button data-id="${job.id}" class="body-content-item-button-edit"><i class="fa-solid fa-pencil"></i></button>
+                        <button data-id="${job.id}" class="body-content-item-button-delete"><i class="fa-solid fa-x"></i></button>
+                        <button data-id="${job.id}" class="body-content-item-button-switch"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    </div>
+                </li>
+            </c:forEach>
         </ul>
-<%--        <c:forEach var="job" items="${data}">--%>
-<%--        this is to make the list of data ready--%>
-<%--        </c:forEach>--%>
     </div>
 </section>
 
+<script src="/pub/js/myjobs.js"></script>
 <jsp:include page="../include/footer.jsp"/>
