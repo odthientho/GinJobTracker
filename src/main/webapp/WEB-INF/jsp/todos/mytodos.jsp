@@ -30,10 +30,20 @@
             <c:forEach var="todo" items="${todos}">
                 <li class="body-content-item" data-id="${todo.id}">
                     <a href="/people/mypeople" class="body-content-item-logo-switch">
+                        <c:if test="${empty todo.people.photo}">
+                            <img src="/pub/images/user_photo/default_photo.png"/>
+                        </c:if>
+                        <c:if test="${not empty todo.people.photo}">
                         <img src="${todo.people.photo}"/>
+                        </c:if>
                     </a>
                     <a class="body-content-item-logo-switch">
-                        <img src="${todo.job.companyLogo}"/>
+                        <c:if test="${empty todo.job.companyLogo}">
+                            <img src="/pub/images/user_photo/default_photo.png"/>
+                        </c:if>
+                        <c:if test="${not empty todo.job.companyLogo}">
+                            <img src="${todo.job.companyLogo}"/>
+                        </c:if>
                     </a>
                     <div class="body-content-item-main">
                         <h2>${todo.title}</h2>
