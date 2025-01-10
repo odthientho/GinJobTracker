@@ -32,6 +32,7 @@ public class PeopleController {
         ModelAndView response = new ModelAndView();
         User currentUser = authenticatedUserService.loadCurrentUser();
         response.addObject("title", "My People");
+        response.addObject("userPhoto", currentUser.getUserPhoto());
         response.addObject("options", RelationshipType.values());
         List<People> people;
         if (query != null) people = peopleDAO.findByUserIdAndRelationshipsType(currentUser.getId(), query);

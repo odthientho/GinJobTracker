@@ -8,13 +8,21 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @Slf4j
 @Controller
@@ -67,5 +75,26 @@ public class LoginController {
             response.setViewName("redirect:/index");
         }
         return response;
+    }
+
+    @PostMapping("/updateProfilePicture")
+    public ResponseEntity<String> updateProfilePicture(@RequestParam("file") MultipartFile file) throws IOException {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("No file uploaded");
+        }
+
+        User currentUSer = authenticatedUserService.loadCurrentUser();
+        if (currentUSer == null) {
+            return ResponseEntity.badRequest().body("Please login first");
+        }
+
+        String fileName = currentUSer.getUsername() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.')).toLowerCase();
+        String pathToSave = "./src/main/webapp/pub/images/user_photo/" + fileName;
+        Files.copy(file.getInputStream(), Paths.get(pathToSave), StandardCopyOption.REPLACE_EXISTING);
+        String url = "/pub/images/user_photo/" + fileName;
+        currentUSer.setUserPhoto(url);
+        userDAO.save(currentUSer);
+
+        return ResponseEntity.ok("File uploaded successfully: " + fileName);
     }
 }

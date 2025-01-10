@@ -1,4 +1,3 @@
-const quoteSection = document.getElementById('quote-section');
 const buttons = document.querySelectorAll('.global-nav-item');
 const quoteMeNav = document.getElementById('quote-me-nav');
 
@@ -23,4 +22,39 @@ buttons.forEach(button => {
             }
         }
     });
+});
+
+const uploadButton = document.getElementById('uploadProfilePictureButton');
+const fileInput = document.getElementById('uploadProfilePictureInput');
+
+uploadButton.addEventListener('click', () => {
+    fileInput.click();
+})
+
+fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        fetch('login/updateProfilePicture', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // Get response text
+                } else {
+                    throw new Error('Failed to upload file');
+                }
+            })
+            .then(data => {
+                alert('File uploaded successfully!');
+                window.location.href = "/";
+            })
+            .catch(error => {
+                alert('Failed to upload file.');
+            });
+    } else {
+        alert('No file selected.');
+    }
 });

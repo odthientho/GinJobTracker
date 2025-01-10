@@ -32,6 +32,7 @@ public class JobController {
         User currentUser = authenticatedUserService.loadCurrentUser();
         List<Job> jobs = jobDAO.findByUserId(currentUser.getId());
         response.addObject("title", "My Jobs");
+        response.addObject("userPhoto", currentUser.getUserPhoto());
         response.addObject("options", ApplicationStage.values());
         if (query != null) {
             List<Job> filteredJobs = jobs.stream().filter(job -> job.getStage().equals(query)).toList();

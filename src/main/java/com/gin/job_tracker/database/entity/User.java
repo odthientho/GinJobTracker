@@ -29,6 +29,9 @@ public class User {
     @Column(name = "username", length = 50)
     private String username;
 
+    @Column(name = "user_photo")
+    private String userPhoto;
+
     @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
     private Timestamp createdAt;
 

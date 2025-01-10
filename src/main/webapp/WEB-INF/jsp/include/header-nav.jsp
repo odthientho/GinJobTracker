@@ -35,7 +35,7 @@
             </sec:authorize>
 
             <button class="global-nav-item me-nav">
-                <img class="global-nav-icon" src="/pub/images/gin-logo.png"/>
+                <img class="global-nav-icon" src="<c:if test="${empty userPhoto}">/pub/images/user_photo/default_photo.png</c:if><c:if test="${not empty userPhoto}">${userPhoto}</c:if>"/>
                 <span>Me <i class="fa-solid fa-caret-down"></i></span>
             </button>
             <div id="quote-me-nav">
@@ -44,7 +44,8 @@
                     <a href="/login/signup">Sign Up</a>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    Hi, <sec:authentication property="principal.username"/>
+                    <a id="uploadProfilePictureButton">Upload Profile Pictrure</a>
+                    <input type="file" id="uploadProfilePictureInput" accept="image/*" style="display: none">
                     <a href="/login/logout">Log Out</a>
                 </sec:authorize>
             </div>

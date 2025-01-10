@@ -31,15 +31,14 @@ public class TodoController {
     @GetMapping("/mytodos")
     public ModelAndView mytodos(@RequestParam(value = "query", required = false) TodoStage query) {
         ModelAndView response = new ModelAndView();
+        User currentUser = authenticatedUserService.loadCurrentUser();
         response.addObject("title", "My Todos");
+        response.addObject("userPhoto", currentUser.getUserPhoto());
         response.addObject("options", TodoStage.values());
 
-        User currentUser = authenticatedUserService.loadCurrentUser();
         List<Todo> todos;
-        if (query != null) {
-            todos = todoDAO.findByUserIdAndStage(currentUser.getId(), query.toString());
-        } else todos = todoDAO.findByUserId(currentUser.getId());
-        log.debug(todos.toString());
+        if (query != null) todos = todoDAO.findByUserIdAndStage(currentUser.getId(), query.toString());
+        else todos = todoDAO.findByUserId(currentUser.getId());
         response.addObject("todos", todos);
         response.setViewName("todos/mytodos");
         return response;
