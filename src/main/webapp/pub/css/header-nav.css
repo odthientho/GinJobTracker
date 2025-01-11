@@ -126,12 +126,23 @@
 /* Dropdown menu items */
 #quote-me-nav a {
     display: block;
-    padding: 10px 15px;
+    font-size: 15px;
+    padding: 10px 10px;
     text-decoration: none;
     color: black;
+    font-weight: bold;
     cursor: pointer;
+    border-bottom: #c1c1c1 1px solid;
+}
+
+#quote-me-nav > a > i {
+    margin-right: 10px;
+    background-color: #e4e3e3;
+    padding: 10px;
+    border-radius: 50%;
+    border: #c1c1c1 1px solid;
 }
 
 #quote-me-nav a:hover {
-    background-color: #999999;
+    background-color: rgba(188, 186, 186, 0.2);
 }

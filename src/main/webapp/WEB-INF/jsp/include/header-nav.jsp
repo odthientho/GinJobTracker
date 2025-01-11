@@ -40,13 +40,13 @@
             </button>
             <div id="quote-me-nav">
                 <sec:authorize access="!isAuthenticated()">
-                    <a href="/login/login">Log In</a>
-                    <a href="/login/signup">Sign Up</a>
+                    <a href="/login/login"><i class="fa-solid fa-right-to-bracket"></i>Log In</a>
+                    <a href="/login/signup"><i class="fa-solid fa-user-plus"></i>Sign Up</a>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <a id="uploadProfilePictureButton">Upload Profile Pictrure</a>
+                    <a id="uploadProfilePictureButton"><i class="fa-regular fa-images"></i>Profile Picture</a>
                     <input type="file" id="uploadProfilePictureInput" accept="image/*" style="display: none">
-                    <a href="/login/logout">Log Out</a>
+                    <a href="/login/logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a>
                 </sec:authorize>
             </div>
         </nav>
