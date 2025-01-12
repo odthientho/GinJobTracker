@@ -79,6 +79,8 @@ public class LoginController {
 
     @PostMapping("/updateProfilePicture")
     public ResponseEntity<String> updateProfilePicture(@RequestParam("file") MultipartFile file) throws IOException {
+
+        log.debug("File uploaded: " + file.getOriginalFilename());
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("No file uploaded");
         }

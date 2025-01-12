@@ -36,7 +36,7 @@ fileInput.addEventListener('change', () => {
     if (file) {
         const formData = new FormData();
         formData.append('file', file);
-        fetch('login/updateProfilePicture', {
+        fetch('/login/updateProfilePicture', {
             method: 'POST',
             body: formData,
         })
@@ -49,7 +49,7 @@ fileInput.addEventListener('change', () => {
             })
             .then(data => {
                 alert('File uploaded successfully!');
-                window.location.href = "/";
+                location.reload();
             })
             .catch(error => {
                 alert('Failed to upload file.');
