@@ -1,0 +1,33 @@
+.error-body-content {
+    position: relative;
+    top: var(--nav-height);
+    padding-top: 25px;
+    width: 60%;
+    justify-self: center;
+}
+
+.error-body-content-container {
+    background-color: white;
+    border: 1px solid #2222;
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-body-content-container img {
+    width: 80%;
+    object-fit: cover;
+}
+
+.error-body-content-container h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.error-body-content-container h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
