@@ -60,11 +60,11 @@ public class Job {
     @Column(name = "user_id")
     private Integer userId;
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<Relationship> relationships;
 
-    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<Todo> todos;
 

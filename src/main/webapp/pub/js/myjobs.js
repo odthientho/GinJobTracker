@@ -8,7 +8,22 @@ document.querySelectorAll('.body-content-item-button-edit').forEach(button => {
 document.querySelectorAll('.body-content-item-button-delete').forEach(button => {
     button.addEventListener("click", (event) => {
         event.stopPropagation();
-        window.location.href = "/jobs/delete/" + button.getAttribute("data-id");
+        fetch('/jobs/delete/'+ button.getAttribute("data-id"), {
+            method: 'POST',
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // Get response text
+                } else {
+                    throw new Error('Failed to delete record.');
+                }
+            })
+            .then(data => {
+                location.reload();
+            })
+            .catch(error => {
+                alert('Failed to delete record.');
+            });
     })
 })
 

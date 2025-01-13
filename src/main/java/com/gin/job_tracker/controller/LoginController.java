@@ -85,17 +85,17 @@ public class LoginController {
             return ResponseEntity.badRequest().body("No file uploaded");
         }
 
-        User currentUSer = authenticatedUserService.loadCurrentUser();
-        if (currentUSer == null) {
+        User currentUser = authenticatedUserService.loadCurrentUser();
+        if (currentUser == null) {
             return ResponseEntity.badRequest().body("Please login first");
         }
 
-        String fileName = currentUSer.getUsername() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.')).toLowerCase();
+        String fileName = currentUser.getUsername() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.')).toLowerCase();
         String pathToSave = "./src/main/webapp/pub/images/user_photo/" + fileName;
         Files.copy(file.getInputStream(), Paths.get(pathToSave), StandardCopyOption.REPLACE_EXISTING);
         String url = "/pub/images/user_photo/" + fileName;
-        currentUSer.setUserPhoto(url);
-        userDAO.save(currentUSer);
+        currentUser.setUserPhoto(url);
+        userDAO.save(currentUser);
 
         return ResponseEntity.ok("File uploaded successfully: " + fileName);
     }

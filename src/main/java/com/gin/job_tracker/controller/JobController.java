@@ -9,12 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Slf4j
@@ -54,6 +54,20 @@ public class JobController {
         response.addObject("job", job);
         response.setViewName("jobs/view");
         return response;
+    }
+
+    @PostMapping("delete/{jobId}")
+    public ResponseEntity<String> delete(@PathVariable("jobId") Integer jobId) throws Exception {
+        User currentUser = authenticatedUserService.loadCurrentUser();
+        if (currentUser == null) {
+            return ResponseEntity.badRequest().body("Please login first");
+        }
+        try {
+            jobDAO.deleteByIdAndUserId(jobId, currentUser.getId());
+            return ResponseEntity.ok("Succesfully deleted");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to delete file: " + e.getMessage());
+        }
     }
 
 }
