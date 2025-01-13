@@ -29,6 +29,10 @@ public class Relationship {
     @Column(name = "job_id")
     private Integer jobId;
 
+    @ManyToOne
+    @JoinColumn(name = "job_id", insertable = false, updatable = false)
+    private Job job;
+
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private RelationshipType type;

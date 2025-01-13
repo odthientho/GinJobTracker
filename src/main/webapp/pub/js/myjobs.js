@@ -32,3 +32,28 @@ document.querySelectorAll('.body-content-filter-button').forEach(button => {
         } else window.location.href = "/jobs/myjobs?query=" + button.getAttribute("data-url");
     })
 })
+
+const attachedResume = document.getElementById('body-view-job-info-attached-resume');
+attachedResume.addEventListener('click', async () => {
+    const fileUrl =  attachedResume.getAttribute("data-resume");
+    const fileName = 'resume.pdf';
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+
+const attachedCoverLetter = document.getElementById('body-view-job-info-attached-cover-letter');
+attachedCoverLetter.addEventListener('click', async () => {
+    const fileUrl =  attachedCoverLetter.getAttribute("data-coverLetter");
+    const fileName = 'coverLetter.pdf';
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});

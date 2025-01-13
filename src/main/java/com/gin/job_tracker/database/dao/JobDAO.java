@@ -10,4 +10,6 @@ import java.util.List;
 public interface JobDAO extends JpaRepository<Job, Long> {
 
     List<Job> findByUserId(Integer userId);
+
+    Job findByIdAndUserId(Integer Id, Integer userId);
 }

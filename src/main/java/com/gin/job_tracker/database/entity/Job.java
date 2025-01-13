@@ -4,6 +4,8 @@ import com.gin.job_tracker.database.enums.ApplicationStage;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -57,5 +59,13 @@ public class Job {
 
     @Column(name = "user_id")
     private Integer userId;
+
+    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Relationship> relationships;
+
+    @OneToMany(mappedBy = "job", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Todo> todos;
 
 }
