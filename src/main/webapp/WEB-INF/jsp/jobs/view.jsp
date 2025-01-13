@@ -39,8 +39,9 @@
             <div class="body-view-job-info-job-activities">
                 <h1><i class="fa-solid fa-check"></i> Job Activity:</h1>
                 <table>
-                <c:forEach var="todo" items="${job.todos}">
+                <c:forEach var="todo" items="${job.todos}" varStatus="num">
                     <tr>
+                        <td>${num.index + 1}</td>
                         <td>${todo.title}</td>
                         <td>${todo.details}</td>
                         <td>${todo.dueDate}</td>

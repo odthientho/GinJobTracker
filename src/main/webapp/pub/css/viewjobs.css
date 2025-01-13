@@ -186,5 +186,17 @@
     margin-top: 15px;
 }
 .body-view-job-info-job-activities table {
-    margin-left: 50px;
+    margin: 10px 10px 10px 50px;
+}
+
+.body-view-job-info-job-activities table td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 10px 5px 15px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.body-view-job-info-job-activities table tr:hover {
+    background-color: #efefef;
+    cursor: pointer;
 }
