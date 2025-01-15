@@ -70,4 +70,12 @@ public class JobController {
         }
     }
 
+    @GetMapping("edit/{jobId}")
+    public String editJobStage(@PathVariable("jobId") Integer jobId, @RequestParam("stage") ApplicationStage stage)  {
+        Job job = jobDAO.findByIdAndUserId(jobId, authenticatedUserService.loadCurrentUser().getId());
+        job.setStage(stage);
+        jobDAO.save(job);
+        return "redirect:/jobs/myjobs";
+    }
+
 }

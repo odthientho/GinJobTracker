@@ -1,7 +1,9 @@
 package com.gin.job_tracker.controller;
 
 import com.gin.job_tracker.database.dao.UserDAO;
+import com.gin.job_tracker.database.dao.UserRoleDAO;
 import com.gin.job_tracker.database.entity.User;
+import com.gin.job_tracker.database.entity.UserRole;
 import com.gin.job_tracker.formbean.SignUpFormBean;
 import com.gin.job_tracker.security.AuthenticatedUserService;
 import jakarta.servlet.http.HttpSession;
@@ -37,6 +39,8 @@ public class LoginController {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+    @Autowired
+    private UserRoleDAO userRoleDAO;
 
     @GetMapping("/login")
     public ModelAndView login() {

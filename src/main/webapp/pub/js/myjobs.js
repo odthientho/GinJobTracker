@@ -8,33 +8,38 @@ document.querySelectorAll('.body-content-item-button-edit').forEach(button => {
 document.querySelectorAll('.body-content-item-button-delete').forEach(button => {
     button.addEventListener("click", (event) => {
         event.stopPropagation();
-        fetch('/jobs/delete/'+ button.getAttribute("data-id"), {
-            method: 'POST',
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.text(); // Get response text
-                } else {
-                    throw new Error('Failed to delete record.');
-                }
+        if (confirm("Are you sure you want to delete this data?")) {
+            fetch('/jobs/delete/' + button.getAttribute("data-id"), {
+                method: 'POST',
             })
-            .then(data => {
-                location.reload();
-            })
-            .catch(error => {
-                alert('Failed to delete record.');
-            });
+                .then(response => {
+                    if (response.ok) {
+                        return response.text(); // Get response text
+                    } else {
+                        throw new Error('Failed to delete record.');
+                    }
+                })
+                .then(data => {
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('Failed to delete record.');
+                });
+        }
     })
 })
 
 document.querySelectorAll('.body-content-item-button-switch').forEach(button => {
     button.addEventListener("click", (event) => {
-        event.stopPropagation();
-        window.location.href = "/jobs/switch/" + button.getAttribute("data-id");
+        const nextOptions = event.target.nextElementSibling;
+        if (nextOptions) {
+            if (nextOptions.style.display === "flex") nextOptions.style.display = "none";
+            else nextOptions.style.display = "flex";
+        }
     })
 })
 
-document.querySelectorAll('.body-content-item').forEach(eachItem => {
+document.querySelectorAll('.body-content-item-main').forEach(eachItem => {
     eachItem.addEventListener("click", () => {
         window.location.href = "/jobs/view/" + eachItem.getAttribute("data-id");
     })

@@ -74,11 +74,11 @@
     border-bottom: #e0dfdf 1px solid;
 }
 
-.body-content-item:hover {
+.body-content-item-main:hover {
     cursor: pointer;
 }
 
-.body-content-item:hover h2 {
+.body-content-item-main:hover h2 {
     text-decoration: underline;
 }
 
@@ -114,6 +114,33 @@
     background-color: #1111;
     cursor: pointer;
     border-radius: 50%;
+}
+
+.body-content-item-options {
+    position: absolute;
+    right: 60px;
+    display: none;
+    flex-direction: column;
+    background-color: var(--body-color);
+    width: 120px;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    box-shadow: 4px 4px 4px rgb(0 0 0 / .3);
+}
+
+.body-content-item-options a {
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: #777777;
+}
+
+.body-content-item-options a:hover{
+    background-color: #c1c1c1;
 }
 
 .body-content-item-main {

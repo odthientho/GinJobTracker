@@ -28,11 +28,11 @@
                 Not Found
             </c:if>
             <c:forEach var="job" items="${jobs}">
-                <li class="body-content-item" data-id="${job.id}">
+                <li class="body-content-item" >
                     <div class="body-content-item-logo">
                         <img src="${job.companyLogo}"/>
                     </div>
-                    <div class="body-content-item-main">
+                    <div data-id="${job.id}" class="body-content-item-main">
                         <h2>${job.title}</h2>
                         <h3>${job.companyName}</h3>
                         <h4>${job.location} (<span>${job.officeType}</span>)</h4>
@@ -41,6 +41,12 @@
                         <button data-id="${job.id}" class="body-content-item-button-edit"><i class="fa-solid fa-pencil"></i></button>
                         <button data-id="${job.id}" class="body-content-item-button-delete"><i class="fa-solid fa-x"></i></button>
                         <button data-id="${job.id}" class="body-content-item-button-switch"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="body-content-item-options">
+                            <a href="/jobs/edit/${job.id}?stage=${options[0]}">${options[0]}</a>
+                            <a href="/jobs/edit/${job.id}?stage=${options[1]}">${options[1]}</a>
+                            <a href="/jobs/edit/${job.id}?stage=${options[2]}">${options[2]}</a>
+                            <a href="/jobs/edit/${job.id}?stage=${options[3]}">${options[3]}</a>
+                        </div>
                     </div>
                 </li>
             </c:forEach>
