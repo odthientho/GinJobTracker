@@ -56,6 +56,17 @@ public class JobController {
         return response;
     }
 
+
+    @GetMapping("/create")
+    public ModelAndView create() {
+        ModelAndView response = new ModelAndView();
+        User currentUser = authenticatedUserService.loadCurrentUser();
+        response.addObject("title", "My Jobs");
+        response.addObject("userPhoto", currentUser.getUserPhoto());
+        response.setViewName("jobs/create");
+        return response;
+    }
+
     @PostMapping("delete/{jobId}")
     public ResponseEntity<String> delete(@PathVariable("jobId") Integer jobId) throws Exception {
         User currentUser = authenticatedUserService.loadCurrentUser();

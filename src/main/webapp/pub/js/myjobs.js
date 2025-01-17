@@ -49,6 +49,7 @@ document.querySelectorAll('.body-content-filter-button').forEach(button => {
     button.addEventListener("click", () => {
         if (button.getAttribute("data-url") === "ALL") window.location.href = "/jobs/myjobs";
         else if (button.getAttribute("data-url") === "NEW") {
+            window.location.href = "/jobs/create";
         } else window.location.href = "/jobs/myjobs?query=" + button.getAttribute("data-url");
     })
 })
@@ -64,7 +65,6 @@ attachedResume.addEventListener('click', async () => {
     link.click();
     document.body.removeChild(link);
 });
-
 
 const attachedCoverLetter = document.getElementById('body-view-job-info-attached-cover-letter');
 attachedCoverLetter.addEventListener('click', async () => {
